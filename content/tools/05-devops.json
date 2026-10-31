@@ -1,36 +1,36 @@
 {
   "title": "Tools & DevOps",
-  "icon": "tabler--tool",
+  "icon": "tabler--tools",
   "items": [
     {
       "title": "Docker",
       "icon": "simple-icons--docker",
       "highlightColor": "#2496ED",
-      "description": "Docker is a set of products that uses operating system-level virtualization to deliver software in packages called containers."
+      "description": "I'm learning it to run applications in the same environment anywhere — so the \"it works on my machine\" problem stops happening."
     },
     {
       "title": "Git",
       "icon": "simple-icons--git",
       "highlightColor": "#F03C2E",
-      "description": "Git is a distributed version control software system that is capable of managing versions of source code or data."
+      "description": "The tool I use every day to track code changes and push them to GitHub."
     },
     {
-      "title": "Jenkins",
-      "icon": "simple-icons--jenkins",
-      "highlightColor": "#D24939",
-      "description": "Jenkins is an open source automation server."
+      "title": "XAMPP",
+      "icon": "simple-icons--xampp",
+      "highlightColor": "#FB7A24",
+      "description": "A local server bundle with Apache, PHP, and MySQL. I use it to run PHP projects on my own machine before uploading them to hosting."
     },
     {
-      "title": "Ansible",
-      "icon": "simple-icons--ansible",
-      "highlightColor": "#EE0000",
-      "description": "Ansible is a suite of software tools that enables infrastructure as code."
+      "title": "Laragon",
+      "icon": "simple-icons--laragon",
+      "highlightColor": "#0E83CD",
+      "description": "A lighter, faster alternative to XAMPP. I use it to run Laravel locally."
     },
     {
-      "title": "Grafana",
-      "icon": "simple-icons--grafana",
-      "highlightColor": "#F46800",
-      "description": "Grafana is an open-source analytics and visualization web application."
+      "title": "Pentaho",
+      "icon": "tabler--database-cog",
+      "highlightColor": "#E60027",
+      "description": "A tool for processing and moving data between sources — taking data from one database, cleaning it up, and storing it somewhere else."
     }
   ]
 }

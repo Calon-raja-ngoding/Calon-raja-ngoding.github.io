@@ -1,1 +1,1 @@
-Edit and add new projects by editing the Markdown in the `content\projects` directory.
+Things I've built while learning. Click one to see the details and the code.

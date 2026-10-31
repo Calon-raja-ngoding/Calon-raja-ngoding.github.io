@@ -1,7 +1,6 @@
 ---
 import Hero, { type Props as HeroProps } from '@/components/Hero.astro'
 import FooterItem from '@/components/layout/FooterItem.astro'
-import Separator from '@/components/layout/Separator.astro'
 import ModeToggle from '@/components/mode/ModeToggle.astro'
 import BaseLayout, {
   type Props as BaseLayoutProps
@@ -17,42 +16,69 @@ export type Props = BaseLayoutProps &
 const { frontmatter } = Astro.props
 
 const latestPost = (await getPosts())[0]
+
+// Footer gaya center (contoh: wepein.tech) — hanya di landing page.
+const socialLinks = [
+  { icon: 'tabler--brand-github', href: 'https://github.com/Calon-raja-ngoding', label: 'GitHub' },
+  { icon: 'tabler--brand-linkedin', href: 'https://www.linkedin.com/in/nabil-hanief-mafazi-4b2204292', label: 'LinkedIn' },
+  { icon: 'tabler--mail', href: 'mailto:nbilhnief@gmail.com', label: 'Email' },
+  { icon: 'tabler--brand-instagram', href: 'https://www.instagram.com/bang.boksss', label: 'Instagram' }
+]
+const year = new Date().getFullYear()
 ---
 
 <BaseLayout frontmatter={frontmatter}>
-  <div class="mx-auto flex min-h-svh w-full max-w-[90%] flex-col justify-between md:max-w-3xl">
-    <div class="mt-16 px-4 sm:mt-36 sm:px-12">
-      <main id="main">
-        {frontmatter.title && <Hero {frontmatter}>{frontmatter.title}</Hero>}
-        <div
-          id="animated-links"
-          class="text-3xl font-semibold tracking-tight text-gray-700/50 sm:text-4xl sm:leading-[46px] dark:text-gray-300/50"
-        >
-          <slot />
-          {latestPost && frontmatter.showLatestPost && (
-            <div class="mt-8">
-              <span class="text-2xl sm:text-3xl">
-                Read my latest post{' '}
-                <a href={`/posts/${latestPost.id}/`}>{latestPost.data.title}</a>
-              </span>
-            </div>
-          )}
-        </div>
-      </main>
-      <footer class="mt-8">
-        <Separator />
-        <div class="flex justify-between gap-2 py-4 text-3xl sm:py-8 sm:text-5xl">
-          {config.footerItems.map((item) => (
-            <FooterItem {item} />
-          ))}
+   <div class="relative flex min-h-svh flex-col">
+     <div class="absolute inset-x-0 top-0 z-10 flex items-center justify-between px-3 pt-3">
+       {frontmatter.title && (
+         <div class="w-fit">
+           <Hero {frontmatter}>{frontmatter.title}</Hero>
+         </div>
+       )}
 
-          <div class="grow"></div>
+       {config.modeToggle && (
+         <div class="flex items-center text-2xl sm:text-3xl">
+           <ModeToggle />
+         </div>
+       )}
+     </div>
 
-          {config.modeToggle && <ModeToggle />}
-        </div>
-      </footer>
-    </div>
-  </div>
+     <div class="mx-auto flex min-h-0 w-full max-w-[90%] flex-1 flex-col justify-center md:max-w-6xl">
+       <div class="px-4 sm:px-8">
+        <main id="main">
+          <div
+            id="animated-links"
+            class="text-center text-2xl font-semibold tracking-tight text-gray-700/50 sm:text-[min(2.6vw,2.2rem)] sm:leading-[1.3] dark:text-gray-300/50"
+          >
+            <slot />
+            {latestPost && frontmatter.showLatestPost && (
+              <div class="mt-8">
+                <span class="text-2xl sm:text-3xl">
+                  Read my latest post{' '}
+                  <a href={`/posts/${latestPost.id}/`}>{latestPost.data.title}</a>
+                </span>
+              </div>
+            )}
+          </div>
+        </main>
+       </div>
+     </div>
+
+     {socialLinks.length > 0 && (
+       <footer class="flex shrink-0 flex-col items-center gap-4 px-4 pb-5">
+         <div class="flex w-full max-w-md items-center justify-around text-2xl sm:text-3xl">
+           {socialLinks.map((item) => (
+             <FooterItem {item} />
+           ))}
+         </div>
+         <p class="text-base text-gray-500 dark:text-gray-400">
+           Nabil Hanief Mafazi (BangBoksss) &copy; {year} &middot; Powered by{' '}
+           <a class="hover:text-accent" href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a>
+           {' '}&amp; <a class="hover:text-accent" href="https://github.com/FjellOverflow/nordlys" target="_blank" rel="noopener noreferrer">Nordlys</a>
+         </p>
+       </footer>
+     )}
+   </div>
 </BaseLayout>
 <style is:global>
   :root {

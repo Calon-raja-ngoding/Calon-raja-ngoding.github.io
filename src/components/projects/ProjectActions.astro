@@ -1,0 +1,40 @@
+---
+import { isAbsoluteUrl } from '@/util'
+
+export interface Props {
+  sourceUrl?: string
+  url?: string
+  class?: string
+}
+
+const { sourceUrl, url, class: className } = Astro.props
+
+const actions = [
+  sourceUrl && {
+    href: sourceUrl,
+    label: 'Source Code',
+    icon: 'tabler--brand-github'
+  },
+  url && {
+    href: url,
+    label: 'Live Preview',
+    icon: 'tabler--external-link'
+  }
+].filter(Boolean) as { href: string; label: string; icon: string }[]
+---
+
+{actions.length > 0 && (
+  <div class={`flex flex-wrap gap-3 ${className}`}>
+    {actions.map(({ href, label, icon }) => (
+      <a
+        href={href}
+        target={isAbsoluteUrl(href) ? '_blank' : '_self'}
+        rel={isAbsoluteUrl(href) ? 'noopener noreferrer' : undefined}
+        class="border-accent/40 hover:border-accent hover:bg-accent/10 inline-flex items-center gap-2 rounded-sm border px-4 py-2 text-sm no-underline transition"
+      >
+        <span class={`iconify text-lg ${icon}`} />
+        {label}
+      </a>
+    ))}
+  </div>
+)}

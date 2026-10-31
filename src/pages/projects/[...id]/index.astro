@@ -1,0 +1,20 @@
+---
+import ProjectLayout from '@/layouts/ProjectLayout.astro'
+import { getProjects } from '@/util/projects'
+import type { InferGetStaticPropsType } from 'astro'
+
+const { project } = Astro.props
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>
+
+export async function getStaticPaths() {
+  const projects = await getProjects()
+
+  return projects.map((project) => ({
+    params: { id: project.id },
+    props: { project }
+  }))
+}
+---
+
+<ProjectLayout project={project} />

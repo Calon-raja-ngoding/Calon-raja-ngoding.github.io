@@ -29,11 +29,15 @@ const projects = defineCollection({
   schema: ({ image }) =>
     z.object({
       title: z.string(),
+      description: z.string(),
       url: z.string().optional(),
+      sourceUrl: z.string().optional(),
+      status: z.string().optional(),
       startDate: z.date().optional().nullable(),
       endDate: z.date().optional().nullable(),
       tags: z.array(z.string()).default([]),
-      previewImage: image().optional()
+      previewImage: image().optional(),
+      showToC: z.boolean().optional().default(true)
     })
 })
 
@@ -73,7 +77,16 @@ const tools = defineCollection({
         z.object({
           title: z.string(),
           description: z.string(),
-          icon: z.string().startsWith('simple-icons--'),
+          icon: z
+            .string()
+            .refine(
+              (icon) =>
+                icon.startsWith('simple-icons--') || icon.startsWith('tabler--'),
+              {
+                message:
+                  'Ikon item harus diawali "simple-icons--" (logo brand) atau "tabler--" (ikon umum).'
+              }
+            ),
           highlightColor: z.string().startsWith('#'),
           tag: z.string().optional()
         })

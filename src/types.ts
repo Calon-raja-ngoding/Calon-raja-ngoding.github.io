@@ -22,6 +22,8 @@ export interface NavItem {
   label: string
   href: string
   icon?: Icon
+  /** Sembunyikan item dari tampilan tanpa menghapus datanya. */
+  hidden?: boolean
 }
 
 export interface NavItemParent {
@@ -37,7 +39,8 @@ const Modes = ['dark', 'light'] as const
 export const ColorSchemes = [
   'scheme-mono',
   'scheme-nord',
-  'scheme-aurora'
+  'scheme-aurora',
+  'scheme-custom'
 ] as const
 
 export const ViewOptions = ['list', 'grid'] as const

@@ -6,37 +6,43 @@
       "title": "Python",
       "icon": "simple-icons--python",
       "highlightColor": "#3776AB",
-      "description": "Python is a high-level, general-purpose programming language that emphasizes code readability, simplicity, and ease-of-writing with the use of significant indentation, \"plain English\" naming, an extensive standard library, and garbage collection."
+      "description": "The first language I learned. I use it for practising logic, working with simple data, and writing small scripts."
     },
     {
-      "title": "Rust",
-      "icon": "simple-icons--rust",
-      "highlightColor": "#BF4E26",
-      "description": "Rust is a general-purpose programming language which emphasizes performance, type safety, concurrency, and memory safety."
+      "title": "Java",
+      "icon": "simple-icons--openjdk",
+      "highlightColor": "#ED8B00",
+      "description": "I'm learning it to understand object-oriented programming (OOP) more deeply."
     },
     {
-      "title": "TypeScript",
-      "icon": "simple-icons--typescript",
-      "highlightColor": "#3178C6",
-      "description": "TypeScript is a high-level programming language that adds static typing with optional type annotations to JavaScript."
+      "title": "JavaScript",
+      "icon": "simple-icons--javascript",
+      "highlightColor": "#F7DF1E",
+      "description": "My main language for making web pages interactive — from DOM manipulation to handling events."
     },
     {
-      "title": "C++",
-      "icon": "simple-icons--cplusplus",
-      "highlightColor": "#00599C",
-      "description": "C++ is a high-level, general-purpose programming language created by Danish computer scientist Bjarne Stroustrup."
+      "title": "PHP",
+      "icon": "simple-icons--php",
+      "highlightColor": "#777BB4",
+      "description": "I'm learning it to understand how dynamic websites work and how they talk to a database on the server side."
     },
     {
-      "title": "Bash",
-      "icon": "simple-icons--gnubash",
-      "highlightColor": "#4EAA25",
-      "description": "Bash is an interactive command interpreter and command language developed for Unix-like operating systems."
+      "title": "Dart",
+      "icon": "simple-icons--dart",
+      "highlightColor": "#0175C2",
+      "description": "I'm learning it alongside Flutter to build mobile apps."
     },
     {
-      "title": "Go",
-      "icon": "simple-icons--go",
-      "highlightColor": "#00ADD8",
-      "description": "Go is a high-level, general-purpose programming language that is statically typed and compiled."
+      "title": "CSS",
+      "icon": "simple-icons--css",
+      "highlightColor": "#663399",
+      "description": "Controls layout, styling, and animation. I use Flexbox and CSS Grid the most."
+    },
+    {
+      "title": "HTML",
+      "icon": "simple-icons--html5",
+      "highlightColor": "#E34F26",
+      "description": "The foundation of every web page. I understand semantic structure, forms, and basic accessibility."
     }
   ]
 }

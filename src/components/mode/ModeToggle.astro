@@ -1,9 +1,17 @@
 <dark-light-toggle>
-  <button title="Toggle dark & light mode" class="flex items-center">
+  <button
+    title="Toggle dark & light mode"
+    role="switch"
+    class="relative flex h-7 w-15 shrink-0 cursor-pointer items-center rounded-full bg-gray-400 px-0.5 transition-colors duration-300 dark:bg-gray-600"
+  >
     <span
-      aria-hidden="true"
-      class="clickable iconify tabler--moon dark:tabler--sun"
-    ></span>
+      class="flex h-5.5 w-5.5 items-center justify-center rounded-full bg-white shadow-sm transition-transform duration-300 dark:translate-x-8.5"
+    >
+      <span
+        aria-hidden="true"
+        class="iconify tabler--sun dark:tabler--moon text-xl text-gray-700"
+      ></span>
+    </span>
   </button>
 </dark-light-toggle>
 
@@ -14,14 +22,15 @@
 
       if (!button) return
 
-      button.setAttribute('aria-label', window.mode.getMode())
+      button.setAttribute('aria-label', 'Dark mode')
+      button.setAttribute('aria-checked', String(window.mode.getMode() === 'dark'))
 
       const handleToggle = (event: MouseEvent) => {
         const newMode = window.mode.getMode() === 'light' ? 'dark' : 'light'
 
         const switchMode = () => {
           window.mode.setMode(newMode)
-          button.setAttribute('aria-label', newMode)
+          button.setAttribute('aria-checked', String(newMode === 'dark'))
         }
 
         if (!document.startViewTransition) {

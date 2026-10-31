@@ -1,0 +1,31 @@
+---
+import logoSvg from '@/assets/logo.svg?raw'
+
+export interface Props {
+  class?: string
+  label?: string
+}
+
+const { class: className = 'h-6 w-auto', label } = Astro.props
+
+// Ambil viewBox asli supaya rasio logo tidak gepeng
+const viewBox = logoSvg.match(/viewBox="([^"]+)"/)?.[1] ?? '0 0 24 24'
+
+// Buang tag <svg> pembungkus, ambil isinya saja
+const inner = logoSvg
+  .replace(/^[\s\S]*?<svg[^>]*>/, '')
+  .replace(/<\/svg>\s*$/, '')
+  .trim()
+  // fill="white" -> currentColor, tapi fill="none" dibiarkan
+  .replace(/fill="(?!none")[^"]*"/g, 'fill="currentColor"')
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox={viewBox}
+  fill="none"
+  class={className}
+  role={label ? 'img' : undefined}
+  aria-label={label}
+  aria-hidden={label ? undefined : 'true'}
+  set:html={inner}></svg>

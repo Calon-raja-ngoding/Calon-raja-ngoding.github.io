@@ -1,0 +1,101 @@
+---
+import ProjectActions from '@/components/projects/ProjectActions.astro'
+import TagsBar from '@/components/TagsBar.astro'
+import ToC from '@/components/ToC.astro'
+import PageLayout, {
+  type Props as PageLayoutProps
+} from '@/layouts/PageLayout.astro'
+import HeadingAnchorsPlugin from '@/plugins/HeadingAnchorsPlugin.astro'
+import { toDateString } from '@/util'
+import { resolveTags } from '@/util/tags'
+import { Image } from 'astro:assets'
+import { render, type CollectionEntry } from 'astro:content'
+
+export interface Props {
+  project: CollectionEntry<'projects'>
+}
+
+const { project } = Astro.props
+const { data } = project
+
+const { Content, headings } = await render(project)
+
+const frontmatter: PageLayoutProps['frontmatter'] = {
+  title: data.title,
+  description: data.description,
+  activeHeaderLink: 'Projects',
+  publishedDate: data.startDate || undefined,
+  openGraphImage: data.previewImage,
+  openGraphContent: 'article'
+}
+
+const showToC = !!data.showToC && headings.length > 0
+---
+
+<PageLayout {frontmatter}>
+  <a href="/projects/" class="clickable flex w-fit items-center gap-1 no-underline">
+    <span class="iconify tabler--arrow-left text-xl"></span>
+    Back to Projects
+  </a>
+
+  <div class="mt-5 flex flex-wrap items-center gap-3">
+    <h1 class="mt-0 mb-0!">{data.title}</h1>
+    {data.status && (
+      <span
+        class="border-accent text-accent rounded-full border px-2.5 py-0.5 text-xs font-medium tracking-wide uppercase"
+      >
+        {data.status}
+      </span>
+    )}
+  </div>
+
+  {data.previewImage && (
+    <Image
+      src={data.previewImage}
+      alt={`${data.title} preview`}
+      widths={[480, 768, 1152]}
+      sizes="(max-width: 768px) 90vw, 768px"
+      class="mt-6 mb-0 h-auto w-full rounded-sm"
+    />
+  )}
+
+  <p class="mt-4 mb-0 text-lg opacity-90">{data.description}</p>
+
+  <div class="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+    {data.startDate && (
+      <span class="opacity-75">
+        Published:{' '}
+        <time datetime={data.startDate.toISOString()}>
+          {toDateString(data.startDate)}
+        </time>
+      </span>
+    )}
+    <TagsBar tags={resolveTags(data.tags)} />
+  </div>
+
+  <ProjectActions
+    sourceUrl={data.sourceUrl}
+    url={data.url}
+    class="mt-6"
+  />
+
+  {showToC && (
+    <div
+      slot="aside"
+      class="border-accent mt-24 hidden border-r pr-4 opacity-75 transition duration-500 ease-in-out hover:opacity-100 2xl:block"
+    >
+      <ToC {headings} open />
+    </div>
+  )}
+  {showToC && (
+    <div class="mt-8 w-fit rounded-sm border 2xl:hidden">
+      <ToC {headings} />
+    </div>
+  )}
+
+  <article>
+    <Content />
+  </article>
+
+  <HeadingAnchorsPlugin />
+</PageLayout>

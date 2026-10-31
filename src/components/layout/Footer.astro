@@ -14,7 +14,7 @@ const currentYear = new Date().getFullYear()
     </span>
 
     <div class="grow"></div>
-    {config.footerItems.map((item) => (
+    {config.footerItems.filter((item) => !item.hidden).map((item) => (
       <FooterItem {item} />
     ))}
   </div>

@@ -19,13 +19,13 @@
     }
   }
 
-  .scheme-aurora {
-    --accent: 0, 183, 86;
-    --accent-bg: 242, 244, 248;
+  .scheme-custom {
+    --accent: 69, 81, 95;
+    --accent-bg: 248, 250, 252;
 
     &[data-mode='dark'] {
-      --accent: 0, 253, 119;
-      --accent-bg: 35, 39, 48;
+      --accent: 248, 250, 252;
+      --accent-bg: 11, 15, 20;
     }
   }
 }

@@ -1,11 +1,12 @@
 ---
 layout: '@/layouts/LandingLayout.astro'
-title: Nordlys
-background: true
+title: BangBoksss
+background: false
 logo: true
 ---
 
-A minimal Astro blog theme.\
-Ideal for a developer [blog](/posts/), it features a [projects](/projects/) portfolio,
-a [photo gallery](/photos/), and a [skills & tools](/tools) section!\
-Read more in the [about](/about/) section.
+I'm a developer in progress, learning to build <br class="hidden sm:inline" />
+things for the web. Explore my [projects](/projects/), read my <br class="hidden sm:inline" />
+[blog](/posts/), browse my [skills & tools](/tools/) or get to know <br class="hidden sm:inline" />
+me better on the [about](/about/) page.
+
