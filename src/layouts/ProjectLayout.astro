@@ -50,13 +50,15 @@ const showToC = !!data.showToC && headings.length > 0
   </div>
 
   {data.previewImage && (
-    <Image
-      src={data.previewImage}
-      alt={`${data.title} preview`}
-      widths={[480, 768, 1152]}
-      sizes="(max-width: 768px) 90vw, 768px"
-      class="mt-6 mb-0 h-auto w-full rounded-sm"
-    />
+    <div class="mx-auto mt-6">
+      <Image
+        src={data.previewImage}
+        alt={`${data.title} preview`}
+        widths={[240, 480, 768]}
+        sizes="(max-width: 768px) 50vw, 384px"
+        class="mx-auto h-auto w-1/2 rounded-sm"
+      />
+    </div>
   )}
 
   <p class="mt-4 mb-0 text-lg opacity-90">{data.description}</p>

@@ -1,5 +1,6 @@
 ---
 import Separator from '@/components/layout/Separator.astro'
+import PageHeader from '@/components/layout/PageHeader.astro'
 
 import PageLayout, {
   type Props as PageLayoutProps
@@ -23,9 +24,9 @@ const PageDescription = getToolsPageDescription()
 <PageLayout {frontmatter}>
   <link rel="stylesheet" href="/tools.css" />
 
-  <h1>{frontmatter.title}</h1>
-
-  {PageDescription && <PageDescription />}
+  <PageHeader title={frontmatter.title}>
+    {PageDescription && <PageDescription />}
+  </PageHeader>
 
   <div class="flex flex-col gap-4">
     {tools.map(({ data: { title, icon, items } }) => (

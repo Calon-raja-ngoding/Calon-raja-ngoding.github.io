@@ -1,0 +1,32 @@
+---
+interface Props {
+  title: string
+  pageSuffix?: string
+}
+
+const { title, pageSuffix } = Astro.props
+---
+
+<div class="page-header">
+  <h1>
+    {title}
+    {pageSuffix && <span>{pageSuffix}</span>}
+  </h1>
+
+  <slot />
+</div>
+
+<style is:global>
+  .page-header {
+    margin-bottom: 2rem;
+  }
+
+  .page-header h1 {
+    margin-bottom: 0.5rem;
+  }
+
+  .page-header p {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+</style>

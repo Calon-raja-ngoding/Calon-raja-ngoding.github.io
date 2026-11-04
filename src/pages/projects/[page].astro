@@ -1,5 +1,6 @@
 ---
 import Pagination from '@/components/Pagination.astro'
+import PageHeader from '@/components/layout/PageHeader.astro'
 import ProjectsGrid from '@/components/projects/ProjectsGrid.astro'
 import ProjectsList from '@/components/projects/ProjectsList.astro'
 import PageLayout, {
@@ -28,12 +29,12 @@ const PageDescription = getProjectsPageDescription()
 ---
 
 <PageLayout {frontmatter}>
-  <h1>
-    {frontmatter.title}
-    {page.currentPage > 1 && <span>{` (page ${page.currentPage})`}</span>}
-  </h1>
-
-  {PageDescription && <PageDescription />}
+  <PageHeader
+    title={frontmatter.title}
+    pageSuffix={page.currentPage > 1 ? ` (page ${page.currentPage})` : undefined}
+  >
+    {PageDescription && <PageDescription />}
+  </PageHeader>
 
   {config.projectsView === 'list' && <ProjectsList projects={page.data} />}
   {config.projectsView === 'grid' && <ProjectsGrid projects={page.data} />}
