@@ -106,7 +106,15 @@ export default defineThemeConfig({
     tailwindcss: 'tabler--brand-tailwind',
     javascript: 'tabler--brand-javascript',
     php: 'tabler--brand-php',
-    laravel: 'tabler--brand-laravel'
+    laravel: 'tabler--brand-laravel',
+    blade: 'tabler--file-code',
+    mysql: 'tabler--brand-mysql',
+    dart: 'tabler--brand-dart',
+    flutter: 'tabler--device-mobile',
+    supabase: 'tabler--database',
+    postgresql: 'tabler--database',
+    python: 'tabler--brand-python',
+    'machine-learning': 'tabler--brain'
   },
 
   // Tema warna blok kode (light, dark).
